@@ -18,7 +18,7 @@ handler顺序
 
 6. 自定义的业务相关handler，包括以下：
 
-   ![image-20220222163047610](C:\Users\Lenvov\AppData\Roaming\Typora\typora-user-images\image-20220222163047610.png)
+   ![image](https://user-images.githubusercontent.com/65518148/155132731-21bd2ac7-685c-4905-8d67-eac9c9180488.png)
 
 ## ChatClient
 
