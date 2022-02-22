@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        let webSocket = new WebSocket("ws://localhost:8888/myWebSocket");
+        // 检测服务端是否开启
+        webSocket.onopen = function (ev) {
+            document.getElementById("tip").innerText = "连接开启";
+        }
+        // 检测WebSocket服务端是否关闭                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   nju
+        webSocket.onclose = function (ev) {
+            document.getElementById("tip").innerText = "连接关闭";
+        }
+        // 接收服务端发送来的数据并保存在ev对象中
+        webSocket.onmessage = function (ev) {
+            document.getElementById("tip").innerText = "接收到的服务端消息：" + ev.data;
+        }
+
+        // 向服务器发送数据
+        function sendMessage(msg) {
+            if (webSocket.readyState == webSocket.OPEN) {
+                webSocket.send(msg);
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+<form>
+    <textarea name="message"></textarea><br/>
+    <input type="button" onclick="sendMessage(this.form.message.value)"
+           value="发送数据"/>
+</form>
+<div id="tip"></div>
+</body>
+</html>
